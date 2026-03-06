@@ -3,7 +3,7 @@ console.log("APP INITIALIZED");
 /* =========================
    GLOBAL CONFIG
 ========================= */
-const API = "http://localhost:5000/api";
+const API = "https://promptly-backend-wssr.onrender.com/api";
 
 /* =========================
    PAGE PROTECTION
