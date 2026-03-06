@@ -1,0 +1,56 @@
+/* ===== CARD ===== */
+
+.card {
+  break-inside: avoid;
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 24px;
+  border-radius: 22px;
+  margin-bottom: 24px;
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.card h4 {
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.likePop {
+  animation: likePop .25s ease;
+}
+
+/* ===== COMMENTS ===== */
+
+.commentBox {
+  max-height: 120px;
+  overflow-y: auto;
+  margin-top: 10px;
+  font-size: 12px;
+  transition: 0.3s ease;
+}
+
+.commentBox,
+.commentInput,
+.commentSubmit {
+  display: none;
+}
+
+.commentBox.open,
+.commentInput.open,
+.commentSubmit.open {
+  display: block;
+}

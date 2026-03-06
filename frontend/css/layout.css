@@ -1,0 +1,44 @@
+/* ===== FEED GRID ===== */
+
+#feed {
+  column-count: 3;
+  column-gap: 22px;
+  padding: 30px;
+}
+
+@media (max-width: 900px) {
+  #feed { column-count: 2; }
+}
+
+@media (max-width: 500px) {
+  #feed { column-count: 1; }
+}
+
+/* ===== NAV ===== */
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* ===== PANEL ===== */
+
+.panel {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* ===== TRENDING ===== */
+
+#trending {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 20px 30px;
+}
+
+.trendCard {
+  min-width: 260px;
+}

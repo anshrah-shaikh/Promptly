@@ -1,0 +1,91 @@
+/* ===== BUTTONS ===== */
+
+button {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-soft);
+  color: white;
+  border: 1px solid var(--border-soft);
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: #1c1c1c;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ===== AVATAR ===== */
+
+.avatar,
+.feedImgAvatar,
+.imgAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: linear-gradient(135deg, #7f5cff, #ff7fd4);
+  box-shadow: 0 4px 15px rgba(127,92,255,0.3);
+}
+
+.userRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+/* ===== FLOATING PROFILE BUTTON ===== */
+
+.floatingProfile {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg,#7f5cff,#ff7fd4);
+  color: white;
+
+  box-shadow:
+    0 15px 40px rgba(127,92,255,0.4);
+
+  transition: all .3s ease;
+}
+
+.floatingProfile:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow:
+    0 25px 60px rgba(127,92,255,0.6);
+}
+
+
+/* ===== TAG ===== */
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  margin-top: 10px;
+  color: var(--text-dim);
+}

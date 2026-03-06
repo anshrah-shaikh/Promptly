@@ -1,0 +1,79 @@
+/* ===== GLOBAL ===== */
+
+:root {
+  --bg-main: #0f0f0f;
+  --bg-soft: #151515;
+  --bg-card: rgba(255,255,255,0.05);
+  --border-soft: rgba(255,255,255,0.08);
+  --accent: #7f5cff;
+  --text-main: #f1f1f1;
+  --text-dim: rgba(255,255,255,0.6);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at 20% 20%, #1a1a2e, transparent 40%),
+              radial-gradient(circle at 80% 0%, #16213e, transparent 40%),
+              #0f0f0f;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.mainContainer {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+h1 {
+  text-align: center;
+  margin: 40px 0 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 36px;
+}
+
+textarea {
+  width: 90%;
+  max-width: 700px;
+  display: block;
+  margin: 14px auto;
+  background: var(--bg-soft);
+  color: white;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 15px;
+  resize: none;
+  transition: 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(127,92,255,0.2);
+}
+
+/* Animations */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes likePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}

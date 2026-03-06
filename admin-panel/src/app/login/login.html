@@ -1,0 +1,56 @@
+<div class="login-wrapper">
+  <div class="background">
+    <span class="blob blob1"></span>
+    <span class="blob blob2"></span>
+  </div>
+
+  <div class="login-card">
+    <div class="logo">⚡ Promptly Admin</div>
+
+    <form #form="ngForm" (ngSubmit)="login(form)" novalidate>
+
+      <!-- USERNAME -->
+      <div class="input-group">
+        <input
+          name="username"
+          [(ngModel)]="username"
+          required
+          #user="ngModel"
+        />
+        <label>Username</label>
+
+        <div class="error" *ngIf="user.invalid && (user.touched || form.submitted)">
+          🤨 Even hackers type a username...
+        </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="input-group">
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+          minlength="4"
+          #pass="ngModel"
+        />
+        <label>Password</label>
+
+        <div class="error" *ngIf="pass.invalid && (pass.touched || form.submitted)">
+          🔐 That password wouldn’t protect a diary.
+        </div>
+      </div>
+
+      <!-- BUTTON (always clickable now) -->
+      <button class="login-btn">
+        Login
+      </button>
+
+      <!-- GLOBAL LOGIN ERROR -->
+      <div class="error global-error" *ngIf="loginError">
+        {{ loginError }}
+      </div>
+
+    </form>
+  </div>
+</div>

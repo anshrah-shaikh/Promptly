@@ -1,0 +1,114 @@
+/* ===== PROFILE LAYOUT ===== */
+
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Avatar */
+
+.avatarBig {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+
+  background: linear-gradient(135deg,#7f5cff,#ff7fd4);
+
+  box-shadow:
+    0 15px 40px rgba(127,92,255,0.5);
+}
+
+/* Username */
+
+.profileContainer h2 {
+  margin: 18px 0 4px;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+}
+
+/* Bio */
+
+.bio {
+  opacity: .7;
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+/* Buttons Row */
+
+.profileActions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* Button Styles */
+
+.primaryBtn {
+  background: linear-gradient(135deg,#7f5cff,#ff7fd4);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(127,92,255,0.5);
+}
+
+.secondaryBtn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 10px 20px;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.secondaryBtn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Floating Home Button */
+
+.floatingHome {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg,#7f5cff,#ff7fd4);
+  color: white;
+
+  box-shadow:
+    0 15px 40px rgba(127,92,255,0.4);
+
+  transition: all .3s ease;
+}
+
+.floatingHome:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow:
+    0 25px 60px rgba(127,92,255,0.6);
+}

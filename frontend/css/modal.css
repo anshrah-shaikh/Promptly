@@ -1,0 +1,123 @@
+/* ===== PREMIUM MODAL BACKDROP ===== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(8px);
+
+  animation: fadeIn .3s ease forwards;
+}
+
+.modal.open {
+  display: flex;
+}
+
+/* ===== MODAL CARD ===== */
+
+.modalCard {
+  width: 380px;
+  padding: 40px;
+  border-radius: 26px;
+
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(35px);
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 40px 100px rgba(0,0,0,0.8),
+    0 0 60px rgba(127,92,255,0.25);
+
+  animation: modalPop .4s cubic-bezier(.2,.8,.2,1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft light overlay */
+
+.modalCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+              rgba(127,92,255,0.2),
+              transparent 60%);
+  pointer-events: none;
+}
+
+/* ===== TITLE ===== */
+
+.modalCard h3 {
+  margin-top: 0;
+  font-size: 22px;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+}
+
+/* ===== INPUTS ===== */
+
+.modalCard input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  background: rgba(255,255,255,0.05);
+  color: white;
+
+  font-size: 14px;
+  transition: all .25s ease;
+}
+
+.modalCard input:focus {
+  outline: none;
+  border-color: #7f5cff;
+  box-shadow: 0 0 0 3px rgba(127,92,255,0.25);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ===== BUTTON ROW ===== */
+
+.modalCard .primaryBtn,
+.modalCard .secondaryBtn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.modalButtons button {
+  flex: 1;
+}
+
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

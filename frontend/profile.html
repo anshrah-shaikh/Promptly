@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Promptly — My Profile</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/feed.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+
+  <h1>My Profile 👤</h1>
+
+  <!-- PROFILE CONTENT -->
+  <div class="profileContainer">
+    <div id="profileInfo"></div>
+
+    <div class="profileActions">
+      <button class="primaryBtn"
+        onclick="document.getElementById('editModal').classList.add('open')">
+        Edit Profile
+      </button>
+
+      <button class="secondaryBtn" onclick="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+
+  <h2 style="text-align:center; margin-top:50px;">My Prompts</h2>
+  <div id="myPosts"></div>
+
+  <!-- Floating Home Button -->
+  <div class="floatingHome"
+    onclick="window.location.href='index.html'">
+    🏠
+  </div>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal">
+    <div class="modalCard">
+      <h3>Edit Profile</h3>
+
+      <input id="bioInput" placeholder="Your bio..." />
+      <input id="avatarInput" placeholder="Emoji or #gradient" />
+
+      <div class="modalButtons">
+        <button class="primaryBtn" onclick="saveProfile()">
+          Save Changes
+        </button>
+        <button class="secondaryBtn"
+          onclick="document.getElementById('editModal').classList.remove('open')">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    requireAuth();
+  </script>
+  <script src="js/posts.js"></script>
+  <script src="js/profile.js"></script>
+
+</body>
+</html>
