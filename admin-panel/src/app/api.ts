@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class Api {
 
-  private BASE = 'http://localhost:5000/api';
+  private BASE = 'https://promptly-backend-wssr.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
