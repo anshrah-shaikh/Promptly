@@ -55,3 +55,19 @@ Deployment
 ---
 
 ## 📂 Project Structure
+
+promptly/
+│
+├── frontend/ # User-facing interface (HTML/CSS/JS)
+├── admin-panel/ # Angular admin dashboard
+├── backend/ # Node.js + Express API
+│
+└── README.md
+
+---
+
+## 🚀 Purpose
+
+This project was developed as a semester-end project to demonstrate Mean-stack web development concepts including frontend design, backend API development, database integration, and cloud deployment.
+
+
