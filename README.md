@@ -1,5 +1,12 @@
 # Promptly
 
+![Angular](https://img.shields.io/badge/Admin%20Panel-Angular-red)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green)
+![Express](https://img.shields.io/badge/API-Express-black)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)
+![Render](https://img.shields.io/badge/Deployment-Render-purple)
+![JavaScript](https://img.shields.io/badge/Frontend-JavaScript-yellow)
+
 Promptly is a MEAN-stack web application built as a semester project for Mean development.
 
 The platform consists of a user-facing interface and a dedicated admin dashboard that interact with a RESTful backend API. The admin panel is built using Angular, while the main frontend uses vanilla HTML, CSS, and JavaScript.
