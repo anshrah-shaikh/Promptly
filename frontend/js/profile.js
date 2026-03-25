@@ -116,3 +116,42 @@ async function deletePost(id) {
 
   loadMyPosts();
 }
+
+
+
+
+
+const gradients = [
+  "#7f5cff",
+  "#ff7fd4",
+  "#00c6ff",
+  "#f7971e",
+  "#00ff87",
+  "#ff4e50",
+  "#8e2de2",
+  "#43cea2",
+  "#ff9966",
+  "#c8a96a" // your premium gold
+];
+
+function loadAvatarPicker() {
+  const picker = document.getElementById("avatarPicker");
+  if (!picker) return;
+
+  picker.innerHTML = "";
+
+  gradients.forEach(color => {
+    const div = document.createElement("div");
+    div.className = "avatarOption";
+
+    div.style.background = `linear-gradient(135deg, ${color}, #000)`;
+
+    div.onclick = () => {
+      document.getElementById("avatarInput").value = color;
+    };
+
+    picker.appendChild(div);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadAvatarPicker);

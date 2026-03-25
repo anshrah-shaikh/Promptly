@@ -112,3 +112,26 @@
   box-shadow:
     0 25px 60px rgba(127,92,255,0.6);
 }
+
+
+.avatarPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.avatarOption {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  border: 2px solid transparent;
+  transition: .2s;
+}
+
+.avatarOption:hover {
+  transform: scale(1.1);
+  border-color: white;
+}
