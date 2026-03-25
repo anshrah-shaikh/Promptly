@@ -5,6 +5,7 @@ body {
   color: #eaeaea;
 }
 
+/* subtle gold divider */
 .divider {
   height: 1px;
   width: 40px;
@@ -12,23 +13,28 @@ body {
   margin-bottom: 24px;
 }
 
-
 /* LAYOUT */
 
 .loginWrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 80px;
+  padding: 40px;
 }
 
-/* LEFT SIDE (branding) */
+/* LEFT SIDE */
 
 .loginLeft {
-  flex: 1;
+  flex: none;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 100px;
-  background: #0b0b0b;
 }
 
 .loginLeft h1 {
@@ -47,13 +53,13 @@ body {
 /* RIGHT SIDE */
 
 .loginRight {
-  flex: 1;
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* CARD (clean luxury look) */
+/* CARD */
 
 .loginCard {
   width: 360px;
@@ -70,7 +76,7 @@ body {
 
 .loginCard h2 {
   margin-top: 0;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
   font-weight: 500;
 }
 
@@ -93,7 +99,7 @@ body {
 
 .loginCard input:focus {
   outline: none;
-  border-color: #c8a96a; /* subtle gold */
+  border-color: #c8a96a;
 }
 
 /* BUTTONS */
@@ -112,7 +118,7 @@ body {
   transition: all .25s ease;
 }
 
-/* PRIMARY (luxury gold) */
+/* PRIMARY */
 
 .primaryBtn {
   background: #c8a96a;
@@ -124,7 +130,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* SECONDARY (clean outline) */
+/* SECONDARY */
 
 .secondaryBtn {
   background: transparent;
@@ -150,17 +156,15 @@ body {
   }
 }
 
-
-
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
   .loginWrapper {
     flex-direction: column;
+    gap: 40px;
   }
 
   .loginLeft {
-    padding: 40px;
     text-align: center;
     align-items: center;
   }
@@ -173,10 +177,6 @@ body {
     font-size: 16px;
   }
 
-  .loginRight {
-    padding: 20px;
-  }
-
   .loginCard {
     width: 100%;
     max-width: 400px;
@@ -185,8 +185,8 @@ body {
 }
 
 @media (max-width: 500px) {
-  .loginLeft {
-    padding: 30px 20px;
+  .loginWrapper {
+    padding: 20px;
   }
 
   .loginCard {
