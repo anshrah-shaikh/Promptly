@@ -38,29 +38,41 @@ function showTrending(posts) {
    LOAD POSTS
 ========================= */
 
-function renderFeedAvatar(author){
+function renderFeedAvatar(post){
 
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const value = post.avatar;
+  const username = post.author;
 
-  if(currentUser && currentUser.username === author){
-
-    if(!currentUser.avatar){
-      return `<div class="avatar">${author[0]}</div>`;
-    }
-
-    if(currentUser.avatar.startsWith("#")){
-      return `
-        <div class="avatar"
-          style="background:linear-gradient(135deg, ${currentUser.avatar}, #000)">
-          ${author[0]}
-        </div>
-      `;
-    }
-
-    return `<div class="avatar">${currentUser.avatar}</div>`;
+  if (!value) {
+    return `<div class="avatar">${username[0]}</div>`;
   }
 
-  return `<div class="avatar">${author[0]}</div>`;
+  const parts = value.split("|");
+  const gradient = parts[0];
+  const emoji = parts[1];
+
+  // gradient + emoji
+  if (gradient.startsWith("#") && emoji) {
+    return `
+      <div class="avatar"
+        style="background:linear-gradient(135deg, ${gradient}, #000)">
+        ${emoji}
+      </div>
+    `;
+  }
+
+  // gradient only
+  if (gradient.startsWith("#")) {
+    return `
+      <div class="avatar"
+        style="background:linear-gradient(135deg, ${gradient}, #000)">
+        ${username[0]}
+      </div>
+    `;
+  }
+
+  // emoji only
+  return `<div class="avatar">${gradient}</div>`;
 }
 
 
@@ -89,7 +101,7 @@ async function loadPosts() {
 
       div.innerHTML = `
         <div class="userRow">
-          ${renderFeedAvatar(p.author)}
+          ${renderFeedAvatar(p)}
           <h4>@${p.author || "anonymous"}</h4>
         </div>
 
@@ -143,7 +155,8 @@ async function createPost() {
     },
     body: JSON.stringify({
       text,
-      author: user.username
+      author: user.username,
+      avatar: user.avatar   // 🔥 ADD THIS
     })
   });
 
