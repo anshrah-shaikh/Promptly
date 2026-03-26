@@ -10,7 +10,7 @@ function filterCategory(cat) {
 }
 
 /* =========================
-   TRENDING SECTION
+   TRENDING
 ========================= */
 
 function showTrending(posts) {
@@ -35,7 +35,7 @@ function showTrending(posts) {
 }
 
 /* =========================
-   LOAD POSTS
+   AVATAR RENDER (FIXED)
 ========================= */
 
 function renderFeedAvatar(post){
@@ -52,7 +52,7 @@ function renderFeedAvatar(post){
   const emoji = parts[1];
 
   // gradient + emoji
-  if (gradient.startsWith("#") && emoji) {
+  if (gradient && gradient.startsWith("#") && emoji) {
     return `
       <div class="avatar"
         style="background:linear-gradient(135deg, ${gradient}, #000)">
@@ -62,7 +62,7 @@ function renderFeedAvatar(post){
   }
 
   // gradient only
-  if (gradient.startsWith("#")) {
+  if (gradient && gradient.startsWith("#")) {
     return `
       <div class="avatar"
         style="background:linear-gradient(135deg, ${gradient}, #000)">
@@ -72,10 +72,16 @@ function renderFeedAvatar(post){
   }
 
   // emoji only
-  return `<div class="avatar">${gradient}</div>`;
+  if (gradient) {
+    return `<div class="avatar">${gradient}</div>`;
+  }
+
+  return `<div class="avatar">${username[0]}</div>`;
 }
 
-
+/* =========================
+   LOAD POSTS
+========================= */
 
 async function loadPosts() {
 
@@ -137,7 +143,7 @@ async function loadPosts() {
 }
 
 /* =========================
-   CREATE POST
+   CREATE POST (FIXED)
 ========================= */
 
 async function createPost() {
@@ -156,7 +162,7 @@ async function createPost() {
     body: JSON.stringify({
       text,
       author: user.username,
-      avatar: user.avatar   // 🔥 ADD THIS
+      avatar: user.avatar   // 🔥 IMPORTANT FIX
     })
   });
 
