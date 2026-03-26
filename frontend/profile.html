@@ -48,9 +48,16 @@
     <div class="modalCard">
       <h3>Edit Profile</h3>
 
+      <!-- BIO -->
       <input id="bioInput" placeholder="Your bio..." />
-      <input id="avatarInput" placeholder="Emoji or #gradient" />
 
+      <!-- GRADIENT INPUT -->
+      <input id="avatarInput" placeholder="Choose gradient below or type #color" />
+
+      <!-- EMOJI INPUT -->
+      <input id="emojiInput" placeholder="Optional emoji (🔥 😈 ✨)" />
+
+      <!-- GRADIENT PICKER -->
       <p style="margin-top:10px; opacity:.7;">Choose a style:</p>
       <div class="avatarPicker" id="avatarPicker"></div>
 
@@ -58,6 +65,7 @@
         <button class="primaryBtn" onclick="saveProfile()">
           Save Changes
         </button>
+
         <button class="secondaryBtn"
           onclick="document.getElementById('editModal').classList.remove('open')">
           Cancel

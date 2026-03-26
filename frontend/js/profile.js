@@ -8,16 +8,33 @@ function renderAvatar(value, username) {
     return `<div class="avatarBig">${username[0]}</div>`;
   }
 
-  if (value.startsWith("#")) {
+  // SPLIT gradient + emoji
+  const parts = value.split("|");
+  const gradient = parts[0];
+  const emoji = parts[1];
+
+  // BOTH gradient + emoji
+  if (gradient.startsWith("#") && emoji) {
     return `
       <div class="avatarBig"
-        style="background:linear-gradient(135deg, ${value}, #000)">
+        style="background:linear-gradient(135deg, ${gradient}, #000)">
+        ${emoji}
+      </div>
+    `;
+  }
+
+  // ONLY gradient
+  if (gradient.startsWith("#")) {
+    return `
+      <div class="avatarBig"
+        style="background:linear-gradient(135deg, ${gradient}, #000)">
         ${username[0]}
       </div>
     `;
   }
 
-  return `<div class="avatarBig">${value}</div>`;
+  // ONLY emoji
+  return `<div class="avatarBig">${gradient}</div>`;
 }
 
 function loadProfile() {
@@ -46,7 +63,12 @@ async function saveProfile() {
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
   const bio = document.getElementById("bioInput").value;
-  const avatar = document.getElementById("avatarInput").value;
+  const gradient = document.getElementById("avatarInput").value;
+const emoji = document.getElementById("emojiInput")?.value || "";
+
+const avatar = emoji 
+  ? `${gradient}|${emoji}` 
+  : gradient;
 
   const res = await fetch(`${API}/users/me`, {
     method: "PUT",
