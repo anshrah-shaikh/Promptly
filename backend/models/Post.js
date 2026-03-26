@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); 
 
 const postSchema = new mongoose.Schema(
   {
@@ -9,6 +9,10 @@ const postSchema = new mongoose.Schema(
     author: {
       type: String,
       default: "anonymous",
+    },
+    avatar: {                // 🔥 ADD THIS
+      type: String,
+      default: "",
     },
     likes: {
       type: Number,
