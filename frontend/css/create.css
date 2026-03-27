@@ -1,0 +1,64 @@
+.editorContainer {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.toolbar button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #111;
+  color: white;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.toolbar button:hover {
+  background: #222;
+}
+
+/* ✨ ACTIVE STATE */
+.toolbar button.active {
+  background: #c8a96a;
+  color: #111;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  height: 24px;
+  background: #333;
+  margin: 0 6px;
+}
+
+.editor {
+  min-height: 250px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #333;
+  background: #0d0d0d;
+  color: white;
+  text-align: left;
+  outline: none;
+}
+
+.postBtn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  background: #c8a96a;
+  color: #111;
+  cursor: pointer;
+  font-weight: 500;
+}

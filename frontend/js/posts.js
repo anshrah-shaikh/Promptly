@@ -26,10 +26,20 @@ function showTrending(posts) {
   sorted.forEach(p => {
     const div = document.createElement("div");
     div.className = "trendCard";
+
     div.innerHTML = `
-      <p>${p.text}</p>
-      <small>❤️ ${p.likes}</small>
+      <div class="userRow">
+        ${renderFeedAvatar(p)}
+        <h4>@${p.username || p.author}</h4>
+      </div>
+
+      <div class="postText">${p.text}</div>
+
+      <div class="trendFooter">
+        ❤️ ${p.likes}
+      </div>
     `;
+
     box.appendChild(div);
   });
 }
@@ -40,19 +50,23 @@ function showTrending(posts) {
 
 function renderFeedAvatar(post){
 
-  const value = post.avatar;
-  const username = post.author;
+  if (!post) return `<div class="avatar">?</div>`;
 
+  const value = post.avatar || "";
+  const username = post.author || "?";
+
+  // nothing saved
   if (!value) {
     return `<div class="avatar">${username[0]}</div>`;
   }
 
+  // split safely
   const parts = value.split("|");
-  const gradient = parts[0];
-  const emoji = parts[1];
+  const gradient = parts[0] || "";
+  const emoji = parts[1] || "";
 
   // gradient + emoji
-  if (gradient && gradient.startsWith("#") && emoji) {
+  if (gradient.startsWith("#") && emoji) {
     return `
       <div class="avatar"
         style="background:linear-gradient(135deg, ${gradient}, #000)">
@@ -62,7 +76,7 @@ function renderFeedAvatar(post){
   }
 
   // gradient only
-  if (gradient && gradient.startsWith("#")) {
+  if (gradient.startsWith("#")) {
     return `
       <div class="avatar"
         style="background:linear-gradient(135deg, ${gradient}, #000)">
@@ -72,8 +86,8 @@ function renderFeedAvatar(post){
   }
 
   // emoji only
-  if (gradient) {
-    return `<div class="avatar">${gradient}</div>`;
+  if (value) {
+    return `<div class="avatar">${value}</div>`;
   }
 
   return `<div class="avatar">${username[0]}</div>`;
@@ -108,10 +122,10 @@ async function loadPosts() {
       div.innerHTML = `
         <div class="userRow">
           ${renderFeedAvatar(p)}
-          <h4>@${p.author || "anonymous"}</h4>
+          <h4>@${p.username || p.author}</h4>
         </div>
 
-        <p>${p.text}</p>
+        <div class="postText">${p.text}</div>
 
         <button onclick="likePost(event,'${p._id}')">
           ❤️ ${p.likes}
@@ -145,13 +159,12 @@ async function loadPosts() {
 /* =========================
    CREATE POST (FIXED)
 ========================= */
-
 async function createPost() {
 
-  const text = document.getElementById("promptText").value;
+  const content = document.getElementById("editor").innerHTML; // ✅ FIXED
   const user = JSON.parse(localStorage.getItem("user"));
 
-  if (!user) return;
+  if (!user || !content.trim()) return;
 
   await fetch(`${API}/posts`, {
     method: "POST",
@@ -160,14 +173,12 @@ async function createPost() {
       "Authorization": localStorage.getItem("token")
     },
     body: JSON.stringify({
-      text,
+      text: content,   // ✅ HTML preserved
       author: user.username,
-      avatar: user.avatar   // 🔥 IMPORTANT FIX
     })
   });
 
-  document.getElementById("promptText").value = "";
-  loadPosts();
+  window.location.href = "index.html"; // ✅ better UX
 }
 
 /* =========================

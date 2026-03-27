@@ -80,40 +80,6 @@
   background: rgba(255,255,255,0.08);
 }
 
-/* Floating Home Button */
-
-.floatingHome {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 22px;
-  cursor: pointer;
-
-  background: linear-gradient(135deg,#7f5cff,#ff7fd4);
-  color: white;
-
-  box-shadow:
-    0 15px 40px rgba(127,92,255,0.4);
-
-  transition: all .3s ease;
-}
-
-.floatingHome:hover {
-  transform: translateY(-6px) scale(1.05);
-  box-shadow:
-    0 25px 60px rgba(127,92,255,0.6);
-}
-
-
 .avatarPicker {
   display: flex;
   flex-wrap: wrap;

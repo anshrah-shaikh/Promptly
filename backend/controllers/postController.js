@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User"); // 🔥 ADD THIS
 
 // Create post
 const createPost = async (req, res) => {
@@ -20,10 +21,25 @@ const createPost = async (req, res) => {
 };
 
 // Get all posts
+
 const getPosts = async (req, res) => {
   try {
     const posts = await Post.find().sort({ createdAt: -1 });
-    res.json(posts);
+
+    // 🔥 attach latest user data
+    const postsWithUser = await Promise.all(
+      posts.map(async (p) => {
+        const user = await User.findOne({ username: p.author });
+
+        return {
+          ...p._doc,
+          avatar: user?.avatar || "",
+          username: user?.username || p.author
+        };
+      })
+    );
+
+    res.json(postsWithUser);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

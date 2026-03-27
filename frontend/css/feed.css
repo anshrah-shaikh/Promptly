@@ -54,3 +54,67 @@
 .commentSubmit.open {
   display: block;
 }
+
+
+
+/* REMOVE THIS FROM GLOBAL */
+
+.postText {
+  line-height: 1.6;
+}
+
+.postText b { font-weight: bold; }
+.postText i { font-style: italic; }
+.postText u { text-decoration: underline; }
+.postText s { text-decoration: line-through; }
+
+.postText ul {
+  padding-left: 20px;
+}
+
+
+/* ===== TRENDING CARD FINAL ===== */
+
+.trendCard {
+  min-width: 260px;
+  max-width: 260px;
+  height: 260px; /* 🔥 FIXED HEIGHT */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  padding: 16px;
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+
+  transition: 0.3s ease;
+  overflow: hidden; /* important */
+}
+
+.trendCard:hover {
+  transform: translateY(-4px);
+}
+
+.trendCard .postText {
+  font-size: 14px;
+  margin: 10px 0;
+
+  overflow-y: auto;
+  max-height: 110px; /* 🔥 scroll zone */
+  padding-right: 4px;
+}
+
+.trendFooter {
+  font-size: 13px;
+  opacity: 0.8;
+
+  align-self: flex-start; /* 🔥 LEFT ALIGN */
+}

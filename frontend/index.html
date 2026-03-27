@@ -5,6 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Promptly</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/layout.css">
@@ -16,28 +18,35 @@
 
 <body>
 
-  <h1>Promptly ✨</h1>
-
-  <!-- Post Panel -->
-  <div class="panel">
-    <textarea id="promptText" placeholder="Write something..."></textarea>
-    <button onclick="createPost()">Post</button>
+  <div class="topBar">
+    <h1 class="logo">Promptly</h1>
+    <p class="tagline">Write something worth reading.</p>
   </div>
 
   <div class="mainContainer"> 
     <!-- Trending -->
-    <h2>Trending 🔥</h2>
+    <h2 class="luxuryText">Trending 🔥</h2>
     <div id="trending"></div>
 
     <!-- Feed -->
-    <h2>Feed</h2>
+    <h2 class="luxuryText">Feed</h2>    
     <div id="feed"></div>
   </div>
 
-  <!-- Floating Profile Button -->
-  <div class="floatingProfile" onclick="window.location.href='profile.html'">
+  <!-- Floating Button -->
+ <div class="floatingStack">
+
+  <div class="floatingProfile"
+    onclick="window.location.href='profile.html'">
     👤
   </div>
+
+  <div class="floatingCreate"
+    onclick="window.location.href='create.html'">
+    ✏️
+  </div>
+
+</div>
 
   <!-- Scripts -->
   <script src="js/app.js"></script>

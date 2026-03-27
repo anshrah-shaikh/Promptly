@@ -55,20 +55,30 @@ function loadProfile() {
 }
 
 /* =========================
-   SAVE PROFILE
+   SAVE PROFILE (FIXED)
 ========================= */
 
 async function saveProfile() {
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
-  const bio = document.getElementById("bioInput").value;
-  const gradient = document.getElementById("avatarInput").value;
-const emoji = document.getElementById("emojiInput")?.value || "";
+  const bioInput = document.getElementById("bioInput").value.trim();
+  const gradientInput = document.getElementById("avatarInput").value.trim();
+  const emojiInput = document.getElementById("emojiInput")?.value.trim() || "";
 
-const avatar = emoji 
-  ? `${gradient}|${emoji}` 
-  : gradient;
+  // 🔥 KEEP OLD VALUES IF EMPTY
+  const bio = bioInput || currentUser.bio || "";
+
+  const oldParts = (currentUser.avatar || "").split("|");
+  const oldGradient = oldParts[0] || "";
+  const oldEmoji = oldParts[1] || "";
+
+  const gradient = gradientInput || oldGradient;
+  const emoji = emojiInput || oldEmoji;
+
+  const avatar = emoji 
+    ? `${gradient}|${emoji}` 
+    : gradient;
 
   const res = await fetch(`${API}/users/me`, {
     method: "PUT",
@@ -84,13 +94,12 @@ const avatar = emoji
 
   localStorage.setItem("user", JSON.stringify(updated));
 
-loadProfile();
+  loadProfile();
 
-// ADD THIS:
-if (window.opener || document.getElementById("feed")) {
-  loadPosts();
-}
-  
+  // refresh feed if open
+  if (window.opener || document.getElementById("feed")) {
+    loadPosts();
+  }
 }
 
 /* =========================
@@ -117,7 +126,7 @@ async function loadMyPosts() {
       const div = document.createElement("div");
       div.className = "card";
       div.innerHTML = `
-        <p>${p.text}</p>
+        <div class="postText">${p.text}</div>
         <button onclick="deletePost('${p._id}')">
           Delete
         </button>
