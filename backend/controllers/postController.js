@@ -20,6 +20,26 @@ const createPost = async (req, res) => {
   }
 };
 
+
+// UPDATE POST
+const updatePost = async (req, res) => {
+  try {
+    const { text } = req.body;
+
+    const post = await Post.findByIdAndUpdate(
+      req.params.id,
+      { text },
+      { new: true }
+    );
+
+    res.json(post);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+
 // Get all posts
 
 const getPosts = async (req, res) => {
@@ -71,4 +91,4 @@ const deletePost = async (req, res) => {
   }
 };
 
-module.exports = { createPost, getPosts, likePost, deletePost };
+module.exports = { createPost, getPosts, likePost, deletePost, updatePost };

@@ -10,20 +10,29 @@ export class Api {
 
   constructor(private http: HttpClient) {}
 
+  // ======================
+  // AUTH HEADERS
+  // ======================
   private getAuthHeaders() {
     const token = localStorage.getItem('token');
 
     return {
       headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token ?? ''}`
       })
     };
   }
 
+  // ======================
+  // AUTH
+  // ======================
   login(data: any) {
     return this.http.post(`${this.BASE}/auth/login`, data);
   }
 
+  // ======================
+  // POSTS
+  // ======================
   getPosts() {
     return this.http.get(`${this.BASE}/posts`);
   }
@@ -35,6 +44,17 @@ export class Api {
     );
   }
 
+  updatePost(id: string, data: any) {
+    return this.http.put(
+      `${this.BASE}/posts/${id}`,
+      data,
+      this.getAuthHeaders()
+    );
+  }
+
+  // ======================
+  // USERS
+  // ======================
   getUsers() {
     return this.http.get(`${this.BASE}/users`);
   }
@@ -46,6 +66,17 @@ export class Api {
     );
   }
 
+  updateUser(id: string, data: any) {
+    return this.http.put(
+      `${this.BASE}/users/${id}`,
+      data,
+      this.getAuthHeaders()
+    );
+  }
+
+  // ======================
+  // COMMENTS
+  // ======================
   getComments(postId: string) {
     return this.http.get(`${this.BASE}/comments/${postId}`);
   }

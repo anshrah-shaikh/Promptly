@@ -9,7 +9,6 @@
   "projects": {
     "admin-panel": {
       "projectType": "application",
-      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -20,7 +19,7 @@
             "outputPath": "dist/admin-panel",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -38,30 +37,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kb",
-                  "maximumError": "8kb"
-                }
-              ]
+              "vendorChunk": false
             },
             "development": {
               "optimization": false,
@@ -72,38 +53,25 @@
               "vendorChunk": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
+
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "admin-panel:build:development"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "admin-panel:build:production"
+              "buildTarget": "admin-panel:build:production"
             },
             "development": {
-              "browserTarget": "admin-panel:build:development"
+              "buildTarget": "admin-panel:build:development"
             }
           },
           "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma"
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }
-  },
-  "defaultProject": "admin-panel"
+  }
 }
